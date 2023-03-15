@@ -94,7 +94,8 @@ sudo --user $USER_NAME paru -S --noconfirm \
   rofi \
   zip \
   unzip \
-  feh
+  feh \
+  easyeffects
 
 sudo --user $USER_NAME rustup toolchain install stable
 sudo --user $USER_NAME cargo install --git https://github.com/rosengrenen/kb_layout_mgr 
