@@ -20,7 +20,9 @@ mount -o subvol=@ $LINUX_PART /mnt
 mount --mkdir -o subvol=@home $LINUX_PART /mnt/home
 mount --mkdir $BOOT_PART /mnt/boot
 
-pacstrap -K /mnt base base-devel linux linux-firmware networkmanager
+sed -i 's/#ParallelDownloads.*$/ParallelDownloads = 32/ /etc/pacman.conf
+
+pacstrap -K /mnt base base-devel linux linux-firmware networkmanager git
 
 genfstab -U /mnt >> /mnt/etc/fstab
 
