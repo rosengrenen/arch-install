@@ -12,11 +12,14 @@ function run_as_user() {
 
 function run_as_user_chdir() {
   cd $1
-  sudo --user $USER_NAME ${$@:2}
+  sudo --user $USER_NAME ${@:2}
   cd -
 }
 
 pacman -Syu --noconfirm
+
+sed -i 's/#Color$/Color\nILoveCandy/' /etc/pacman.conf
+sed -i 's/#ParallelDownloads.*$/ParallelDownloads = 32/ /etc/pacman.conf
 
 pacman -S --noconfirm git fish sudo btrfs-progs
 

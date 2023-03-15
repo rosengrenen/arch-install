@@ -7,8 +7,7 @@ LINUX_PART=
 ROOT_PASS=
 
 mkfs.fat -F 32 $BOOT_PART
-
-mkfs.btrfs $LINUX_PART
+mkfs.btrfs --force $LINUX_PART
 
 mount $LINUX_PART /mnt
 btrfs subvolume create /mnt/@
@@ -18,7 +17,7 @@ umount /mnt
 btrfs filesystem label $LINUX_PART arch
 
 mount -o subvol=@ $LINUX_PART /mnt
-mount -o subvol=@home $LINUX_PART /mnt/home
+mount --mkdir -o subvol=@home $LINUX_PART /mnt/home
 mount --mkdir $BOOT_PART /mnt/boot
 
 pacstrap -K /mnt base base-devel linux linux-firmware networkmanager
