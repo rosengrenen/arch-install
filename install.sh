@@ -1,5 +1,7 @@
 #/bin/sh
 
+set -e
+
 BOOT_PART=
 LINUX_PART=
 
